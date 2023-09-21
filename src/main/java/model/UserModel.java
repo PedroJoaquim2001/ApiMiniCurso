@@ -10,7 +10,7 @@ public class UserModel implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID userId;
+    private UUID id;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -18,17 +18,20 @@ public class UserModel implements Serializable {
     @Column(nullable = false)
     private String senha;
 
+
+    public UserModel(){}
+
     public UserModel(String email, String senha) {
         this.email = email;
         this.senha = senha;
     }
 
-    public UUID getUserId() {
-        return userId;
+    public UUID getId() {
+        return id;
     }
 
-    public void setUserId(UUID userId) {
-        this.userId = userId;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getEmail() {

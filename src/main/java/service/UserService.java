@@ -3,6 +3,8 @@ package service;
 import jakarta.transaction.Transactional;
 import model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import repository.UserRepository;
 
@@ -15,7 +17,11 @@ public class UserService {
     private UserRepository userRepository;
 
     public Optional<UserModel> findById(UUID id){
-        return userRepository.findById(id);
+        return userRepository.findById (id);
+    }
+
+    public Page<UserModel> findAll(Pageable pageable){
+        return userRepository.findAll(pageable);
     }
 
     @Transactional
