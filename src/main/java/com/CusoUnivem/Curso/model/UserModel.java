@@ -1,4 +1,4 @@
-package model;
+package com.CusoUnivem.Curso.model;
 
 import jakarta.persistence.*;
 import java.io.Serializable;

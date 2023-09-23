@@ -1,12 +1,12 @@
-package service;
+package com.CusoUnivem.Curso.service;
 
 import jakarta.transaction.Transactional;
-import model.UserModel;
+import com.CusoUnivem.Curso.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import repository.UserRepository;
+import com.CusoUnivem.Curso.repository.UserRepository;
 
 import java.util.Optional;
 import java.util.UUID;

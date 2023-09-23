@@ -1,7 +1,7 @@
-package repository;
+package com.CusoUnivem.Curso.repository;
 
 
-import model.UserModel;
+import com.CusoUnivem.Curso.model.UserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

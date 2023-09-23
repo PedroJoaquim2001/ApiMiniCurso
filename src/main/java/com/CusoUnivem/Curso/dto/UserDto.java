@@ -1,9 +1,8 @@
-package dto;
+package com.CusoUnivem.Curso.dto;
 
 
-import model.UserModel;
+import com.CusoUnivem.Curso.model.UserModel;
 import org.antlr.v4.runtime.misc.NotNull;
-import org.hibernate.annotations.NotFound;
 import org.hibernate.validator.constraints.Length;
 
 

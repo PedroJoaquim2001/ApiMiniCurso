@@ -1,8 +1,9 @@
-package controller;
+package com.CusoUnivem.Curso.controller;
 
-import dto.UserDto;
+import com.CusoUnivem.Curso.dto.UserDto;
+import com.CusoUnivem.Curso.model.UserModel;
+import com.CusoUnivem.Curso.service.UserService;
 import jakarta.validation.Valid;
-import model.UserModel;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,7 +13,6 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.UserService;
 
 import java.util.Optional;
 import java.util.UUID;

@@ -1,9 +1,8 @@
-package dto;
+package com.CusoUnivem.Curso.dto;
 
 
 import jakarta.validation.constraints.NotNull;
-import model.ProductModel;
-import model.UserModel;
+import com.CusoUnivem.Curso.model.ProductModel;
 import org.hibernate.validator.constraints.Length;
 
 public class ProductDto {

@@ -1,4 +1,4 @@
-package model;
+package com.CusoUnivem.Curso.model;
 
 import jakarta.persistence.*;
 
@@ -19,6 +19,8 @@ public class ProductModel implements Serializable {
 
     @Column(nullable = false)
     private double preco;
+
+
 
     public ProductModel(){}
     public ProductModel(String nomeProduto, double preco) {
