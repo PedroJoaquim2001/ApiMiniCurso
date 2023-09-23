@@ -1,6 +1,8 @@
 package com.CusoUnivem.Curso.dto;
 
 
+import com.CusoUnivem.Curso.model.UserModel;
+import com.CusoUnivem.Curso.service.UserService;
 import jakarta.validation.constraints.NotNull;
 import com.CusoUnivem.Curso.model.ProductModel;
 import org.hibernate.validator.constraints.Length;
@@ -10,6 +12,9 @@ public class ProductDto {
     private String nomeProduto;
     @NotNull
     private double preco;
+
+    @NotNull
+    private String email;
 
     public String getNomeProduto() {
         return nomeProduto;
@@ -27,8 +32,17 @@ public class ProductDto {
         this.preco = preco;
     }
 
-    public ProductModel convert(){
-        return new ProductModel(nomeProduto, preco);
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public ProductModel convert(UserService userService){
+        UserModel userModel = userService.findByEmail(email).get();
+        return new ProductModel(nomeProduto, preco, userModel);
     }
 
 }

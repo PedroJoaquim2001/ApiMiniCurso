@@ -13,6 +13,9 @@ public class ProductModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    @ManyToOne
+    @JoinColumn(name = "email")
+    private UserModel email;
 
     @Column(nullable = false, unique = true)
     private String nomeProduto;
@@ -23,7 +26,8 @@ public class ProductModel implements Serializable {
 
 
     public ProductModel(){}
-    public ProductModel(String nomeProduto, double preco) {
+    public ProductModel(String nomeProduto, double preco, UserModel email) {
+        this.email = email;
         this.nomeProduto = nomeProduto;
         this.preco = preco;
     }
@@ -34,6 +38,14 @@ public class ProductModel implements Serializable {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public UserModel getEmail() {
+        return email;
+    }
+
+    public void setEmail(UserModel email) {
+        this.email = email;
     }
 
     public String getNomeProduto() {

@@ -1,6 +1,8 @@
 package com.CusoUnivem.Curso.controller;
 
 import com.CusoUnivem.Curso.dto.ProductDto;
+import com.CusoUnivem.Curso.model.UserModel;
+import com.CusoUnivem.Curso.service.UserService;
 import jakarta.validation.Valid;
 import com.CusoUnivem.Curso.model.ProductModel;
 import org.springframework.beans.BeanUtils;
@@ -23,11 +25,23 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    final UserService userService;
+
+    public ProductController(UserService service) {
+        this.userService = service;
+    }
+
 
     @PostMapping
     public ResponseEntity<Object> saveProduct(@RequestBody @Valid ProductDto productDto){
+
+        Optional<UserModel> userModelOptional = userService.findByEmail(productDto.getEmail());
+        if (!userModelOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Este email não é valido.");
+        }
         var productModel = new ProductModel();
-        BeanUtils.copyProperties(productDto, productModel);
+        productModel = productDto.convert(userService);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.save(productModel));
     }
 
@@ -73,7 +87,7 @@ public class ProductController {
         }
 
         var productModel = new ProductModel();
-        productModel = productDto.convert();
+        productModel = productDto.convert(userService);
         productModel.setId(productModelOptional.get().getId());
 
         return ResponseEntity.status(HttpStatus.OK).body(productService.save(productModel));

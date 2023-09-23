@@ -74,7 +74,7 @@ public class UserController {
 
         var userModel = new UserModel();
         userModel = userDto.convert();
-        userModel.setId(userModelOptional.get().getId());
+        userModel.setUserId(userModelOptional.get().getUserId());
 
         return ResponseEntity.status(HttpStatus.OK).body(userService.save(userModel));
     }
