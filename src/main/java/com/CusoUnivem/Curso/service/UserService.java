@@ -20,7 +20,7 @@ public class UserService {
         return userRepository.findById (id);
     }
 
-    public Page<UserModel> findAll(Pageable pageable){
+    public Page<UserModel> findAll(Pageable pageable) {
         return userRepository.findAll(pageable);
     }
 

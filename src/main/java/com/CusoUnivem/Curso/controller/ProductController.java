@@ -5,7 +5,6 @@ import com.CusoUnivem.Curso.model.UserModel;
 import com.CusoUnivem.Curso.service.UserService;
 import jakarta.validation.Valid;
 import com.CusoUnivem.Curso.model.ProductModel;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +20,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/product")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class ProductController {
     @Autowired
     private ProductService productService;

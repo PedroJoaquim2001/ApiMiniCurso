@@ -3,6 +3,7 @@ package com.CusoUnivem.Curso.controller;
 import com.CusoUnivem.Curso.dto.UserDto;
 import com.CusoUnivem.Curso.model.UserModel;
 import com.CusoUnivem.Curso.service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class UserController {
     @Autowired
     private UserService userService;
@@ -34,7 +36,8 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<Page<UserModel>> getAllProduct(@PageableDefault(page = 0, size = 10, sort = "userId", direction = Sort.Direction.ASC) Pageable pageable){
-        return ResponseEntity.status(HttpStatus.OK).body(userService.findAll(pageable));
+        ResponseEntity<Page<UserModel>> body = ResponseEntity.status(HttpStatus.OK).body(userService.findAll(pageable));
+        return body;
     }
 
 

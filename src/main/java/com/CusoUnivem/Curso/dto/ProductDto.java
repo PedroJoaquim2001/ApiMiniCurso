@@ -7,6 +7,9 @@ import jakarta.validation.constraints.NotNull;
 import com.CusoUnivem.Curso.model.ProductModel;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ProductDto {
     @NotNull @Length(min = 1,max = 100)
     private String nomeProduto;
